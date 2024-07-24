@@ -9,7 +9,7 @@ const apiKey = "50d546c1f017ef762afe04e6b618906e";
 const apiUrl =
     "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
-
+//show the Weather 
 const weatherShow = (data) => {
     if(data.weather[0].main == "Clouds") {
         weatherIcon.src = "images/clouds.png";
@@ -28,6 +28,7 @@ const weatherShow = (data) => {
     }
 }
 
+//check the city to weather
 const checkWeather = async (data) => {
     document.querySelector(".city").innerHTML = `${data.name}`;
     temp = Math.round(data.main.temp);
@@ -40,6 +41,7 @@ const checkWeather = async (data) => {
     
 };
 
+//data fetch through API
 const getdata = async (city) => {
         const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
         const data = await response.json();
@@ -56,8 +58,6 @@ const getdata = async (city) => {
     
 };  
 
-
-// getdata("indore");
 
 searchBtn.addEventListener("click", () => {
     getdata(search.value);
